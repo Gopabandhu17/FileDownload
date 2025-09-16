@@ -6,33 +6,87 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9B8BB5C92E798E8E00813E5E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8BB5C02E798E8E00813E5E /* File.swift */; };
+		9B8BB5CA2E798E8E00813E5E /* FileDownloaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8BB5C12E798E8E00813E5E /* FileDownloaderApp.swift */; };
+		9B8BB5CB2E798E8E00813E5E /* FileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8BB5C22E798E8E00813E5E /* FileListView.swift */; };
+		9B8BB5CC2E798E8E00813E5E /* FileListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8BB5C32E798E8E00813E5E /* FileListViewModel.swift */; };
+		9B8BB5CD2E798E8E00813E5E /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8BB5C42E798E8E00813E5E /* FileType.swift */; };
+		9B8BB5CE2E798E8E00813E5E /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8BB5C62E798E8E00813E5E /* ProgressBarView.swift */; };
+		9B8BB5CF2E798E8E00813E5E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8BB5C72E798E8E00813E5E /* ProgressView.swift */; };
+		9B8BB5D02E798E8E00813E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B8BB5BF2E798E8E00813E5E /* Assets.xcassets */; };
+		9BDC0A6F2E794BB200F9A27B /* FileDownloadManager in Frameworks */ = {isa = PBXBuildFile; productRef = 9BDC0A6E2E794BB200F9A27B /* FileDownloadManager */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		9B8BB5BF2E798E8E00813E5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9B8BB5C02E798E8E00813E5E /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		9B8BB5C12E798E8E00813E5E /* FileDownloaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloaderApp.swift; sourceTree = "<group>"; };
+		9B8BB5C22E798E8E00813E5E /* FileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListView.swift; sourceTree = "<group>"; };
+		9B8BB5C32E798E8E00813E5E /* FileListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListViewModel.swift; sourceTree = "<group>"; };
+		9B8BB5C42E798E8E00813E5E /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
+		9B8BB5C52E798E8E00813E5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B8BB5C62E798E8E00813E5E /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		9B8BB5C72E798E8E00813E5E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		9BA3CE322E755E9100546C4A /* FileDownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileDownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		9BA3CE342E755E9100546C4A /* FileDownloader */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FileDownloader;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9BA3CE2F2E755E9100546C4A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BDC0A6F2E794BB200F9A27B /* FileDownloadManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B8BB5BE2E798E8E00813E5E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B8BB5C72E798E8E00813E5E /* ProgressView.swift */,
+				9B8BB5C22E798E8E00813E5E /* FileListView.swift */,
+				9B8BB5C62E798E8E00813E5E /* ProgressBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B8BB5C82E798E8E00813E5E /* FileDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				9B8BB5D42E798EB000813E5E /* ViewModel */,
+				9B8BB5D32E798EA200813E5E /* Model */,
+				9B8BB5BE2E798E8E00813E5E /* View */,
+				9B8BB5BF2E798E8E00813E5E /* Assets.xcassets */,
+				9B8BB5C12E798E8E00813E5E /* FileDownloaderApp.swift */,
+				9B8BB5C52E798E8E00813E5E /* Info.plist */,
+			);
+			path = FileDownloader;
+			sourceTree = "<group>";
+		};
+		9B8BB5D32E798EA200813E5E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B8BB5C02E798E8E00813E5E /* File.swift */,
+				9B8BB5C42E798E8E00813E5E /* FileType.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B8BB5D42E798EB000813E5E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9B8BB5C32E798E8E00813E5E /* FileListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		9BA3CE292E755E9100546C4A = {
 			isa = PBXGroup;
 			children = (
-				9BA3CE342E755E9100546C4A /* FileDownloader */,
+				9B8BB5C82E798E8E00813E5E /* FileDownloader */,
 				9BA3CE332E755E9100546C4A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,11 +114,9 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				9BA3CE342E755E9100546C4A /* FileDownloader */,
-			);
 			name = FileDownloader;
 			packageProductDependencies = (
+				9BDC0A6E2E794BB200F9A27B /* FileDownloadManager */,
 			);
 			productName = FileDownloader;
 			productReference = 9BA3CE322E755E9100546C4A /* FileDownloader.app */;
@@ -94,6 +146,9 @@
 			);
 			mainGroup = 9BA3CE292E755E9100546C4A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9BDC0A6D2E794BB200F9A27B /* XCRemoteSwiftPackageReference "FileDownloaderSPM" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9BA3CE332E755E9100546C4A /* Products */;
 			projectDirPath = "";
@@ -109,6 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B8BB5D02E798E8E00813E5E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +175,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B8BB5C92E798E8E00813E5E /* File.swift in Sources */,
+				9B8BB5CA2E798E8E00813E5E /* FileDownloaderApp.swift in Sources */,
+				9B8BB5CB2E798E8E00813E5E /* FileListView.swift in Sources */,
+				9B8BB5CC2E798E8E00813E5E /* FileListViewModel.swift in Sources */,
+				9B8BB5CD2E798E8E00813E5E /* FileType.swift in Sources */,
+				9B8BB5CE2E798E8E00813E5E /* ProgressBarView.swift in Sources */,
+				9B8BB5CF2E798E8E00813E5E /* ProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +319,8 @@
 				DEVELOPMENT_TEAM = S755CX4QX2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FileDownloader/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +349,8 @@
 				DEVELOPMENT_TEAM = S755CX4QX2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FileDownloader/Info.plist;
+				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -324,6 +391,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9BDC0A6D2E794BB200F9A27B /* XCRemoteSwiftPackageReference "FileDownloaderSPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Gopabandhu17/FileDownloaderSPM.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9BDC0A6E2E794BB200F9A27B /* FileDownloadManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9BDC0A6D2E794BB200F9A27B /* XCRemoteSwiftPackageReference "FileDownloaderSPM" */;
+			productName = FileDownloadManager;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9BA3CE2A2E755E9100546C4A /* Project object */;
 }
