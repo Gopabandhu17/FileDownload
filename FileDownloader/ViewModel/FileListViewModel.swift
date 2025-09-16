@@ -59,7 +59,10 @@ final class FileListViewModel: ObservableObject {
         // This tell the queue how many files can download at once
         queue.maxConcurrentOperationCount = 2
         
-        for file in files {
+        // filter file those are not downloaded yet and add to the queue to download
+        let filesToDownload = files.filter { !$0.doesExist }.map { $0 }
+        
+        for file in filesToDownload {
             let options = DownloadOptions(
                 destinationURL: documents,
                 filename: "\(file.name).\(file.type.extensionName)",
@@ -112,11 +115,26 @@ final class FileListViewModel: ObservableObject {
         let downloader = FileDownloadManager()
         
         downloader.download(from: URL(string: file.urlString)!, options: options) { progress in
-            print(String(format: "Progress: %.0f", progress * 100))
+            let progressString = String(format: "%.0f", progress * 100)
+            DispatchQueue.main.async {
+                if let index = self.files.firstIndex(where: { $0.id == file.id }) {
+                    var updated = self.files
+                    updated[index].downloadPercentageString = progressString
+                    self.files = updated
+                }
+            }
         } onCompletion: { result in
             switch result {
             case .success(let fileURL):
                 print("Saved to: \(fileURL)")
+                // TODO: - updating the file name of a file forcefully because somehow after completion of 100% progress download button is not getting disabled, this will be fixed later
+                DispatchQueue.main.async {
+                    if let index = self.files.firstIndex(where: { $0.id == file.id }) {
+                        var updated = self.files
+                        updated[index].name = file.name
+                        self.files = updated
+                    }
+                }
             case .failure(let error):
                 print("Download failed with error: \(error.localizedDescription)")
             }
