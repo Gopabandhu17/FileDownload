@@ -88,7 +88,7 @@ extension FileListView {
             Image(systemName: "arrow.down.circle.fill")
                 .font(.title)
         }
-        .disabled(file.doesExist)
+        .disabled(file.doesExist || Int(file.downloadPercentageString) ?? 0 > 0)
         .tint(.white)
     }
     
