@@ -54,6 +54,80 @@ final class FileListViewModel: ObservableObject {
         )
     ]
     
+    func download(for file: File) {
+        
+        DownloadManager.shared.setMaxConcurrentDownloads(6)
+        
+        guard let index = index(of: file),
+              let url = URL(string: file.urlString) else { return }
+        
+        switch file.status {
+        case .inProgress, .completed:
+            return
+        default:
+            break
+        }
+        
+        update(index: index) { file in
+            file.downloadPercentageString = "0%"
+            file.status = .inProgress
+        }
+        
+        let options = DownloadOptions(
+            destinationURL: documents,
+            filename: "\(file.name).\(file.type.extensionName)",
+            overwrite: true,
+            headers: [:],
+            timeout: 60
+        )
+        
+        DownloadManager.shared.startDownload(from: url, options: options) { progress in
+            let progressString = String(format: "%.0f", progress * 100)
+            self.update(index: index) { file in
+                file.downloadPercentageString = progressString
+                file.status = .inProgress
+            }
+        } completion: { [weak self] result in
+            guard let self,
+                  let innnerIndex = self.index(of: file) else { return }
+            switch result {
+            case .success(let fileURL):
+                self.update(index: innnerIndex) { file in
+                    file.downloadPercentageString = "100%"
+                    file.status = .completed
+                }
+            case .failure(let error):
+                print("Failed to download file: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func pauseDownload(for file: File) {
+        guard let url = URL(string: file.urlString),
+              let index = index(of: file) else { return }
+        DownloadManager.shared.pauseDownload(for: url)
+        update(index: index) { $0.status = .pause }
+    }
+    
+    func resumeDownload(for file: File) {
+        guard let url = URL(string: file.urlString),
+              let index = index(of: file) else { return }
+        DownloadManager.shared.resumeDownload(for: url)
+        update(index: index) { $0.status = .inProgress }
+    }
+    
+    private func index(of file: File) -> Int? {
+        files.firstIndex { $0.id == file.id }
+    }
+    
+    private func update(index: Int, mutate: (inout File) -> Void) {
+        var file = files[index]
+        mutate(&file)
+        DispatchQueue.main.async {
+            self.files[index] = file
+        }
+    }
+    
     func downloadMultipleFiles() {
         
         // This tell the queue how many files can download at once
@@ -71,11 +145,9 @@ final class FileListViewModel: ObservableObject {
                 timeout: 120
             )
             
-            let downloader = FileDownloadManager()
             let operation = DownloadOperation(
                 url: URL(string: file.urlString)!,
                 options: options,
-                downloader: downloader,
                 progress: { progress in
                     let progressString = String(format: "%.0f", progress * 100)
                     DispatchQueue.main.async {
@@ -111,10 +183,8 @@ final class FileListViewModel: ObservableObject {
             headers: [:],
             timeout: 60
         )
-        
-        let downloader = FileDownloadManager()
-        
-        downloader.download(from: URL(string: file.urlString)!, options: options) { progress in
+                
+        FileDownloadManager.shared.download(from: URL(string: file.urlString)!, options: options) { progress in
             let progressString = String(format: "%.0f", progress * 100)
             DispatchQueue.main.async {
                 if let index = self.files.firstIndex(where: { $0.id == file.id }) {

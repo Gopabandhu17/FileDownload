@@ -83,12 +83,36 @@ extension FileListView {
     @ViewBuilder
     private func downloadButtonView(_ file: File) -> some View {
         Button {
-            viewModel.download(file)
+            switch file.status {
+            case .notStarted, .cancelled:
+                viewModel.download(for: file)
+            case .inProgress:
+                viewModel.pauseDownload(for: file)
+            case .pause:
+                viewModel.resumeDownload(for: file)
+            case .completed:
+                break
+            }
+            
         } label: {
-            Image(systemName: "arrow.down.circle.fill")
-                .font(.title)
+            switch file.status {
+            case .notStarted, .cancelled:
+                Image(systemName: "arrow.down.circle.fill")
+                    .font(.title)
+            case .inProgress:
+                Image(systemName: "pause.fill")
+                    .font(.title)
+            case .pause:
+                Image(systemName: "play.fill")
+                    .font(.title)
+            case .completed:
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.title)
+                    .tint(.green)
+            }
+            
         }
-        .disabled(file.doesExist || Int(file.downloadPercentageString) ?? 0 > 0)
+        // .disabled(file.doesExist || Int(file.downloadPercentageString) ?? 0 > 0)
         .tint(.white)
     }
     

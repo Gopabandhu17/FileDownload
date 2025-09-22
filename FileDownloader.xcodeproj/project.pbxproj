@@ -15,7 +15,7 @@
 		9B8BB5CE2E798E8E00813E5E /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8BB5C62E798E8E00813E5E /* ProgressBarView.swift */; };
 		9B8BB5CF2E798E8E00813E5E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8BB5C72E798E8E00813E5E /* ProgressView.swift */; };
 		9B8BB5D02E798E8E00813E5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B8BB5BF2E798E8E00813E5E /* Assets.xcassets */; };
-		9BDC0A6F2E794BB200F9A27B /* FileDownloadManager in Frameworks */ = {isa = PBXBuildFile; productRef = 9BDC0A6E2E794BB200F9A27B /* FileDownloadManager */; };
+		9BFDE5812E818927006B842D /* FileDownloadManager in Frameworks */ = {isa = PBXBuildFile; productRef = 9BFDE5802E818927006B842D /* FileDownloadManager */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BDC0A6F2E794BB200F9A27B /* FileDownloadManager in Frameworks */,
+				9BFDE5812E818927006B842D /* FileDownloadManager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 			);
 			name = FileDownloader;
 			packageProductDependencies = (
-				9BDC0A6E2E794BB200F9A27B /* FileDownloadManager */,
+				9BFDE5802E818927006B842D /* FileDownloadManager */,
 			);
 			productName = FileDownloader;
 			productReference = 9BA3CE322E755E9100546C4A /* FileDownloader.app */;
@@ -147,7 +147,7 @@
 			mainGroup = 9BA3CE292E755E9100546C4A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				9BDC0A6D2E794BB200F9A27B /* XCRemoteSwiftPackageReference "FileDownloaderSPM" */,
+				9BFDE57F2E818927006B842D /* XCRemoteSwiftPackageReference "FileDownloaderSPM" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9BA3CE332E755E9100546C4A /* Products */;
@@ -393,20 +393,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9BDC0A6D2E794BB200F9A27B /* XCRemoteSwiftPackageReference "FileDownloaderSPM" */ = {
+		9BFDE57F2E818927006B842D /* XCRemoteSwiftPackageReference "FileDownloaderSPM" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Gopabandhu17/FileDownloaderSPM.git";
 			requirement = {
-				branch = master;
+				branch = TaskManagement;
 				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9BDC0A6E2E794BB200F9A27B /* FileDownloadManager */ = {
+		9BFDE5802E818927006B842D /* FileDownloadManager */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9BDC0A6D2E794BB200F9A27B /* XCRemoteSwiftPackageReference "FileDownloaderSPM" */;
+			package = 9BFDE57F2E818927006B842D /* XCRemoteSwiftPackageReference "FileDownloaderSPM" */;
 			productName = FileDownloadManager;
 		};
 /* End XCSwiftPackageProductDependency section */
